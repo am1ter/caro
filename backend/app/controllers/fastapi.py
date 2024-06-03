@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 import structlog
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from controllers.endpoints.ask import router as router_ask
 from controllers.endpoints.system import router as router_system
 
 from system.settings import Settings
@@ -28,4 +29,5 @@ fastapi_app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-fastapi_app.include_router(router_system)
+fastapi_app.include_router(router=router_ask)
+fastapi_app.include_router(router=router_system)
