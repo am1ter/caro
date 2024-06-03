@@ -1,16 +1,16 @@
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass
 
-from backend.app.interfaces.database import BasicDatabase
-from backend.app.interfaces.scraper import BasicScraper
 from entities.product import AlternativeProduct, SourceProductInputUrl
+from interfaces.database import BasicDatabase
+from interfaces.scraper import BasicScraper
 
 
 @dataclass
 class BasicResponder(metaclass=ABCMeta):
-    database: BasicDatabase
     scraper: BasicScraper
+    database: BasicDatabase | None
 
     @abstractmethod
-    def respond(self, url: SourceProductInputUrl) -> list[AlternativeProduct]:
+    def respond(self, product_url: SourceProductInputUrl) -> list[AlternativeProduct]:
         raise NotImplementedError
