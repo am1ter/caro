@@ -1,13 +1,13 @@
 from fastapi import APIRouter, Depends
 from system.settings import Settings
 
-from entities.product import ProductInputUrl
+from entities.product import SourceProductInputUrl
 
 router = APIRouter(prefix=f"/{Settings().BACKEND_API_PREFIX}/ask")
 
 
 @router.post(path="/", status_code=200)
-async def ask_about_webpage(url: ProductInputUrl = Depends()) -> bool:
+async def ask_about_webpage(url: SourceProductInputUrl = Depends()) -> bool:
     """
     Run parsing of webpage and return results
     1. Get URL of the webpage from the request and validate it

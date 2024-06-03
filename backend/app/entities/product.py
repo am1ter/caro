@@ -1,5 +1,13 @@
-from pydantic import BaseModel, HttpUrl
+from interfaces.product import Product, ProductUrl
 
 
-class ProductInputUrl(BaseModel):
-    url: HttpUrl
+class SourceProductInputUrl(ProductUrl): ...
+
+
+class SourceProduct(Product): ...
+
+
+class AlternativeProductOutputUrl(ProductUrl): ...
+
+
+class AlternativeProduct(Product): ...
